@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="studentForm">
+        <input type="text" id="studentName" placeholder="ชื่อของนักเรียน" required>
+        <button type="submit">เพิ่มนักเรียน</button>
+    </form>
+    <ul id="studentList"></ul>
+
+    <script>
+        $(document).ready(function() {
+            // การจัดการการส่งฟอร์ม
+            $('#studentForm').on('submit', function(event) {
+                event.preventDefault(); // ป้องกันการรีเฟรชหน้า
+                const studentName = $('#studentName').val().trim(); // รับชื่อจากฟอร์ม
+
+                if (studentName) {
+                    // เพิ่มชื่อของนักเรียนไปยังรายการ
+                    $('#studentList').append(`<li>${studentName}</li>`);
+                    alert(`นักเรียน ${studentName} ถูกเพิ่มแล้ว!`); // แสดงการแจ้งเตือน
+                    $('#studentName').val(''); // เคลียร์ช่องกรอกชื่อ
+                }
+            });
+        });
+    </script>
+</body>
+</html>
